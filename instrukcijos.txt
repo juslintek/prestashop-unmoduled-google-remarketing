@@ -1,0 +1,29 @@
+        Prideti žemiau esanti koda i product.tpl faila, bet kur:
+		
+		{assign var="adwords_convertion_id" value=""}
+		<!-- „Google“ pakartotines rinkodaros žymos kodas -->
+        <!--------------------------------------------------
+        Pakartotiniu rinkodaros žymu negalima susieti su tapatybe identifikuojancia informacija arba deti puslapiuose, susijusiuose su delikataus turinio kategorijomis. Žr. daugiau informacijos ir nurodymu, kaip nustatyti žyma: http://google.com/ads/remarketingsetup
+        --------------------------------------------------->
+        <script type="text/javascript">
+            var google_tag_params = {
+                dynx_itemid: '{$product->reference|escape:'htmlall':'UTF-8'}',
+                dynx_itemid2: '{$product->id}',
+                dynx_pagetype: 'productdetails',
+                dynx_totalvalue: '{$productPrice}'
+            };
+        </script>
+        <script type="text/javascript">
+            /* <![CDATA[ */
+            var google_conversion_id = {$adwords_convertion_id};
+            var google_custom_params = window.google_tag_params;
+            var google_remarketing_only = true;
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+        </script>
+        <noscript>
+            <div style="display:inline;">
+                <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/{$adwords_convertion_id}/?value=0&amp;guid=ON&amp;script=0"/>
+            </div>
+        </noscript>
